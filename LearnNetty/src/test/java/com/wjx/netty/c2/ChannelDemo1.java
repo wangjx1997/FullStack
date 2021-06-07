@@ -15,13 +15,13 @@ import java.nio.channels.FileChannel;
 @Slf4j
 public class ChannelDemo1 {
     public static void main(String[] args) {
-        try (RandomAccessFile file = new RandomAccessFile("helloword/data.txt", "rw")) {
+        try (RandomAccessFile file = new RandomAccessFile("data.txt", "rw")) {
             FileChannel channel = file.getChannel();
             ByteBuffer byteBuffer = ByteBuffer.allocate(10);
             while (true) {
                 int read = channel.read(byteBuffer);
-                log.debug("读取的字节数");
-                if (read == -1) {
+                log.debug("读取的字节数: "+read);
+                if (read == -1) { //  -1 是无内容    // 0本次没有读进内容 buffer写满了的情况
                     break;
                 }
 
@@ -29,5 +29,18 @@ public class ChannelDemo1 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+//        try (FileChannel channel = new FileInputStream("data.txt").getChannel()) {
+//            ByteBuffer byteBuffer = ByteBuffer.allocate(10);
+//            while (true) {
+//                int read = channel.read(byteBuffer);
+//                log.debug("读取的字节数: "+read);
+//                if (read == 0) {
+//                    break;
+//                }
+//
+//            }
+//        } catch (IOException e) {
+//        }
     }
 }
