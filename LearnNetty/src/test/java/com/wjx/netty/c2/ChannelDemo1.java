@@ -20,10 +20,18 @@ public class ChannelDemo1 {
             ByteBuffer byteBuffer = ByteBuffer.allocate(10);
             while (true) {
                 int read = channel.read(byteBuffer);
-                log.debug("读取的字节数: "+read);
                 if (read == -1) { //  -1 是无内容    // 0本次没有读进内容 buffer写满了的情况
                     break;
                 }
+                log.debug("读取的字节数: "+read);
+//                ByteBufferUtil.debugAll(byteBuffer);
+                byteBuffer.flip(); //切换读模式
+//                ByteBufferUtil.debugAll(byteBuffer);
+                while (byteBuffer.hasRemaining()) { // 是否还有剩余未读数据
+                    byte b = byteBuffer.get();
+                    log.debug("实际字节:"+(char) b);
+                }
+                byteBuffer.clear(); //切换写模式
 
             }
         } catch (IOException e) {
