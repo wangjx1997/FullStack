@@ -17,6 +17,7 @@ public class ChannelDemo1 {
     public static void main(String[] args) {
         try (RandomAccessFile file = new RandomAccessFile("data.txt", "rw")) {
             FileChannel channel = file.getChannel();
+//            System.out.println(channel.position());
             ByteBuffer byteBuffer = ByteBuffer.allocate(10);
             while (true) {
                 int read = channel.read(byteBuffer);
@@ -34,6 +35,7 @@ public class ChannelDemo1 {
                 byteBuffer.clear(); //切换写模式
 
             }
+//            System.out.println(channel.position());
         } catch (IOException e) {
             e.printStackTrace();
         }
