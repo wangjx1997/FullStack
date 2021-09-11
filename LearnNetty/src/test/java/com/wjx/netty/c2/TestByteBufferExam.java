@@ -18,7 +18,7 @@ public class TestByteBufferExam {
         split1(byteBuffer);
     }
 
-    private static void split(ByteBuffer source) {
+    public static void split(ByteBuffer source) {
         source.flip();
         for (int i = 0; i < source.limit(); i++) {
 
@@ -41,7 +41,7 @@ public class TestByteBufferExam {
     }
 
 
-    private static void split1(ByteBuffer source) {
+    public static void split1(ByteBuffer source) {
         source.flip();
         int ordLimit = source.limit();
         for (int i = 0; i < ordLimit; i++) {

@@ -1,4 +1,4 @@
-package com.wjx.netty.c2;
+package com.wjx.netty.c3;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
