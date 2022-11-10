@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.wjx.model.User;
 import org.wjx.util.SqlSessionFactoryUtils;
 
+import java.sql.Connection;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class Main {
         List<User> user = sqlSession.selectList("org.wjx.mapper01.UserMapper.getAllUser");
         System.out.println(user);
 
+        Connection connection = sqlSession.getConnection();
 
         sqlSession.close();
     }

@@ -24,10 +24,10 @@ public class TestCyclicBarrier {
     }
 
     public static void runABCWhenAllReady() {
-        int count = 3;
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(count);
+        int count = 2;
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(count,()-> System.out.println("开始跑步"));
         Random random = new Random();
-        for (char threadName = 'A'; threadName <= 'C' ; threadName++) {
+        for (char threadName = 'A'; threadName <= 'Z' ; threadName++) {
             final String name = String.valueOf(threadName);
             new Thread(() -> {
                 int prepareTime = random.nextInt(10000);
@@ -43,7 +43,7 @@ public class TestCyclicBarrier {
                 } catch (InterruptedException | BrokenBarrierException e) {
                     e.printStackTrace();
                 }
-                System.out.println(name + " 开始跑步");
+//                System.out.println(name + " 开始跑步");
             }).start();
         }
     }

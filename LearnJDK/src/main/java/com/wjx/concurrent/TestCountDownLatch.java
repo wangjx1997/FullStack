@@ -3,7 +3,7 @@ package com.wjx.concurrent;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * 线程 D 在A、B、C都同步执行完毕后执行
+ * 线程通讯 D 在A、B、C都同步执行完毕后执行
  *
  * 创建一个计数器，并设置一个初始值， CountdownLatch countDownLatch = new CountDownLatch(3);
  *

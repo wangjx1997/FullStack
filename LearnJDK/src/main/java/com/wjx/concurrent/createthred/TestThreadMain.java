@@ -1,4 +1,4 @@
-package com.wjx.concurrent;
+package com.wjx.concurrent.createthred;
 
 /**
  * @Author WangJX
