@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.wjx.grpc.api";
+option java_outer_classname = "LoginProto";
+import "google/protobuf/wrappers.proto";
+
+package login;
+
+service HelloService{
+  rpc sayHello(google.protobuf.StringValue) returns (google.protobuf.StringValue);
+}
