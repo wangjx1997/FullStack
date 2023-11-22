@@ -34,7 +34,7 @@ public class RedissonTest {
         // 利用 循环+多线程 模仿高并发请求
         for (int i = 0; i < 10; i++) {
             executor.execute(() -> {
-                // 这里获取公平锁，遵循先进先出原则，方便测试
+                // 这里获取非公平锁，遵循先进先出原则，方便测试
                 RLock fairLock = redissonClient.getLock(LOCK_TEST_KEY);
 
                 try {
