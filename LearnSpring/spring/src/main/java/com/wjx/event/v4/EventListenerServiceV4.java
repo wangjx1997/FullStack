@@ -1,4 +1,4 @@
-package com.wjx.event.v1;
+package com.wjx.event.v4;
 
 import com.wjx.event.pojo.A;
 import com.wjx.event.pojo.B;
@@ -10,17 +10,17 @@ import org.springframework.context.event.EventListener;
  * @Description
  */
 
-public class EventListenerServiceV1 {
+public class EventListenerServiceV4 {
 
 
     @EventListener
-    public void eventA(A a){
-        System.out.println("测试："+a);
+    public void eventA(BaseEventV4<A> a){
+        System.out.println(a);
     }
 
 
     @EventListener
-    public void eventB(B b){
-        System.out.println("测试："+b);
+    public void eventB(BaseEventV4<B> b){
+        System.out.println(b);
     }
 }

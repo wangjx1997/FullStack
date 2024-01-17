@@ -1,27 +1,26 @@
 package com.wjx.event.v2;
 
+import com.wjx.event.enums.OpEnum;
 import com.wjx.event.pojo.A;
 import com.wjx.event.pojo.B;
-import com.wjx.event.v1.EventListenerServiceV1;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
  * @Author WangJX
- * @Date 2024/1/15 17:16
+ * @Date 2024/1/14 17:16
  * @Description
  */
 public class MainV2 {
 
 
-
     @Configuration
-    static class Config{
+    static class Config {
 
         @Bean
-        public com.wjx.event.v1.EventListenerServiceV1 eventListenerServiceV1(){
-            return new EventListenerServiceV1();
+        public EventListenerServiceV2 eventListenerServiceV2() {
+            return new EventListenerServiceV2();
         }
     }
 
@@ -29,7 +28,7 @@ public class MainV2 {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainV2.Config.class);
 
-        context.publishEvent(new A());
-        context.publishEvent(new B());
+        context.publishEvent(new EventA(new A("a"), OpEnum.ADD.getType()));
+        context.publishEvent(new EventB(new B("b"), OpEnum.DEL.getType()));
     }
 }

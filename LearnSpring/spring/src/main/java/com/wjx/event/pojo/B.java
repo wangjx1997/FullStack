@@ -2,7 +2,7 @@ package com.wjx.event.pojo;
 
 /**
  * @Author WangJX
- * @Date 2024/1/15 17:03
+ * @Date 2024/1/14 17:03
  * @Description
  */
 public class B {
@@ -22,5 +22,12 @@ public class B {
 
     public void setB(String b) {
         this.b = b;
+    }
+
+    @Override
+    public String toString() {
+        return "B{" +
+                "b='" + b + '\'' +
+                '}';
     }
 }
