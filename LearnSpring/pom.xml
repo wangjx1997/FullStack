@@ -13,6 +13,7 @@
         <module>LearnSpringMvc</module>
         <module>spring</module>
         <module>webflux</module>
+        <module>spring-boot-demo</module>
     </modules>
 
     <properties>

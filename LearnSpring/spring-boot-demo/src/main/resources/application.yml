@@ -1,0 +1,89 @@
+
+
+
+testymal:
+  # String configName
+  configName: 我是ymal配置
+
+  # UserInfo userInfo
+  userInfo:
+    userId: 123
+    userName: 张三
+
+  # List<String> lists
+  lists:
+    - 1
+    - 2
+    - 3
+    - 4
+
+  # List<UserInfo> listUserInfo
+  listUserInfo:
+    - userId: 123
+      userName: 张三
+    - userId: 321
+      userName: 李四
+
+  # List<List<UserInfo>> listUserInfos
+  listUserInfos:
+    -
+      - userId: 123
+        userName: 张三
+      - userId: 321
+        userName: 李四
+    -
+      - userId: 456
+        userName: 王五
+      - userId: 654
+        userName: 赵六
+
+  # Map<String,String> maps
+  maps:
+    id: 我是id
+    name: 我是name
+    age: 我是age
+
+  # Map<String,List<String>> mapList
+  mapList:
+    userIds:
+      - 123
+      - 321
+    ips:
+      - 127.0.0.1
+      - 127.0.0.2
+
+
+  # Map<String,UserInfo> mapUser
+  mapUser:
+    123:
+      userId: 123
+      userName: 张三
+    321:
+      userId: 321
+      userName: 李四
+
+  # Map<String,List<UserInfo>> mapUserList
+  mapUserList:
+    A:
+      - userId: 123
+        userName: 张三
+      - userId: 321
+        userName: 李四
+    B:
+      - userId: 456
+        userName: 王五
+      - userId: 654
+        userName: 赵六
+  # Map<String,Map<String,String>> ttl
+  ttl:
+    app:
+      role: 3
+      dict: 4
+    job:
+      server: 5
+
+
+
+
+server:
+  port: 9999
