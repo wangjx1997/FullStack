@@ -1,0 +1,72 @@
+dataSources:
+
+  #druid连接池
+  ds_1:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://120.48.127.223:3340/user_db
+    username: root
+    password: 123456
+    web-stat-filter:
+      enabled: true
+      stat-view-servlet:
+        enabled: true
+        allow: # 设置白名单，不填则允许所有访问
+        url-pattern: /druid/*
+        login-username: druid  # 控制台管理用户名和密码
+        login-password: druid
+    filter:
+      stat:
+        enabled: true
+        log-slow-sql: true # 慢 SQL 记录
+        slow-sql-millis: 100
+        merge-sql: true
+      wall:
+        config:
+          multi-statement-allow: true
+    initial-size: 5 # 初始连接数
+    min-idle: 10 # 最小连接池数量
+    max-active: 20 # 最大连接池数量
+    max-wait: 600000 # 配置获取连接等待超时的时间，单位：毫秒
+    time-between-eviction-runs-millis: 60000 # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位：毫秒
+    min-evictable-idle-time-millis: 300000 # 配置一个连接在池中最小生存的时间，单位：毫秒
+    max-evictable-idle-time-millis: 900000 # 配置一个连接在池中最大生存的时间，单位：毫秒
+    validation-query: SELECT 1 FROM DUAL # 配置检测连接是否有效
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+  ds_2:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://120.48.127.223:3341/user_db
+    username: root
+    password: 123456
+    #Hikari连接池
+#    ds_1:
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+#    jdbcUrl: jdbc:mysql://120.48.127.223:3340/user_db
+#    username: root
+#    password: 123456
+#  ds_2:
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+#    jdbcUrl: jdbc:mysql://120.48.127.223:3341/user_db
+#    username: root
+#    password: 123456
+
+rules:
+  - !READWRITE_SPLITTING
+    dataSources:
+      readwrite_ds:
+        writeDataSourceName: ds_1
+        readDataSourceNames:
+          - ds_2
+        transactionalReadQueryStrategy: PRIMARY
+        loadBalancerName: random
+    loadBalancers:
+      random:
+        type: RANDOM
+
+props:
+  sql-show: true
